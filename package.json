@@ -2,7 +2,7 @@
   "name": "capitaljs",
   "version": "0.0.1",
   "description": "Financial formulas in JavaScript",
-  "main": "capital.js",
+  "main": "src/index.js",
   "private": true,
   "scripts": {
     "test": "tape test/*.js",

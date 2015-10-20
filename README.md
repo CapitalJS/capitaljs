@@ -1,8 +1,10 @@
-# generator-node-capitaljs [![Build Status](https://secure.travis-ci.org/capitaljs/capitaljs.png?branch=master)](https://travis-ci.org/capitaljs/capitaljs)
+# generator-node-capitaljs [![Build Status](https://secure.travis-ci.org/CapitalJS/capitaljs.png?branch=master)](https://travis-ci.org/CapitalJS/capitaljs)
 
 ## Installation
 
-`npm install capitaljs`.
+```
+$ npm install capitaljs
+```
 
 ## Usage
 
@@ -25,7 +27,7 @@ Please read the [Contributing guidelines](CONTRIBUTING.md).
 ### Running Tests
 
 ```
-npm test
+$ npm test
 ```
 
 ## License
