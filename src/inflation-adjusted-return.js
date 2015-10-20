@@ -1,5 +1,3 @@
-var utils = require('./utils');
-
 /**
  * Calculates the inflation-adjusted return.
  * @param {object} investment return and inflation rate.

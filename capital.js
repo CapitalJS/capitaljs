@@ -26,7 +26,7 @@ function cashFlow(opts) {
 module.exports = cashFlow;
 
 //# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/cash-flow.js
-},{"./utils/enforce/number/positive":6,"./utils/sumArray":8}],2:[function(require,module,exports){
+},{"./utils/enforce/number/positive":7,"./utils/sumArray":9}],2:[function(require,module,exports){
 "use strict";
 var enforceNumber = require('./utils/enforce/number');
 function compoundAnnualGrowthRate(opts) {
@@ -47,16 +47,35 @@ function compoundAnnualGrowthRate(opts) {
 module.exports = compoundAnnualGrowthRate;
 
 //# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/compound-annual-growth-rate.js
-},{"./utils/enforce/number":5}],3:[function(require,module,exports){
+},{"./utils/enforce/number":6}],3:[function(require,module,exports){
 "use strict";
 module.exports = {
   'interest': require('./interest'),
   'cash-flow': require('./cash-flow'),
-  'compound-annual-growth-rate': require('./compound-annual-growth-rate')
+  'compound-annual-growth-rate': require('./compound-annual-growth-rate'),
+  'inflation-adjusted-return': require('./inflation-adjusted-return')
 };
 
 //# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/index.js
-},{"./cash-flow":1,"./compound-annual-growth-rate":2,"./interest":4}],4:[function(require,module,exports){
+},{"./cash-flow":1,"./compound-annual-growth-rate":2,"./inflation-adjusted-return":4,"./interest":5}],4:[function(require,module,exports){
+"use strict";
+function inflationAdjustedReturn(opts) {
+  var $__1;
+  var $__0 = opts,
+      investmentReturn = $__0.investmentReturn,
+      inflationRate = ($__1 = $__0.inflationRate) === void 0 ? true : $__1,
+      realReturn;
+  if (!investmentReturn || !inflationRate) {
+    throw new Error('Income and expenses are required and must be non-negative.');
+  }
+  realReturn = ((1 + investmentReturn) / (1 + inflationRate) - 1) * 100;
+  realReturn = (Math.round(realReturn * 100) / 100);
+  return realReturn;
+}
+module.exports = inflationAdjustedReturn;
+
+//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/inflation-adjusted-return.js
+},{}],5:[function(require,module,exports){
 "use strict";
 var enforcePositive = require('./utils/enforce/number/positive');
 function interest(opts) {
@@ -83,7 +102,7 @@ function interest(opts) {
 module.exports = interest;
 
 //# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/interest.js
-},{"./utils/enforce/number/positive":6}],5:[function(require,module,exports){
+},{"./utils/enforce/number/positive":7}],6:[function(require,module,exports){
 "use strict";
 function enforceNumber(opts) {
   for (var key in opts) {
@@ -98,7 +117,7 @@ function enforceNumber(opts) {
 module.exports = enforceNumber;
 
 //# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/utils/enforce/number/index.js
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 var processOpts = require('../../processOpts');
 function check(key, val) {
@@ -113,7 +132,7 @@ function enforceNonNegativeNumber(opts) {
 module.exports = enforceNonNegativeNumber;
 
 //# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/utils/enforce/number/positive.js
-},{"../../processOpts":7}],7:[function(require,module,exports){
+},{"../../processOpts":8}],8:[function(require,module,exports){
 "use strict";
 function processOpts(opts, cb) {
   if (opts === Object(opts) && Object.prototype.toString.call(opts) !== '[object Array]') {
@@ -134,7 +153,7 @@ function processOpts(opts, cb) {
 module.exports = processOpts;
 
 //# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/utils/processOpts.js
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 function sumArray(arr) {
   var total = 0;
