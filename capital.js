@@ -2,7 +2,7 @@
 "use strict";
 module.exports = {interest: require('./interest')};
 
-//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/index.js
+//# sourceURL=/Users/scotta/Projects/capitaljs/src/index.js
 },{"./interest":2}],2:[function(require,module,exports){
 "use strict";
 var utils = require('./utils');
@@ -29,7 +29,7 @@ function interest(opts) {
 }
 module.exports = interest;
 
-//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/interest.js
+//# sourceURL=/Users/scotta/Projects/capitaljs/src/interest.js
 },{"./utils":3}],3:[function(require,module,exports){
 "use strict";
 function enforceNonNegative(opts) {
@@ -41,9 +41,18 @@ function enforceNonNegative(opts) {
     }
   }
 }
-;
-module.exports = {enforceNonNegative: enforceNonNegative};
+function sumArray(arr) {
+  var total = 0;
+  for (var i = 0; i < arr.length; i++) {
+    total += arr[i];
+  }
+  return total;
+}
+module.exports = {
+  enforceNonNegative: enforceNonNegative,
+  sumArray: sumArray
+};
 
-//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/utils/index.js
+//# sourceURL=/Users/scotta/Projects/capitaljs/src/utils/index.js
 },{}]},{},[1])(1)
 });
