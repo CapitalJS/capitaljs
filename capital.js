@@ -1,5 +1,33 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.capital = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
+var enforcePositive = require('./utils/enforce/number/positive'),
+    sumArray = require('./utils/sumArray');
+function arrayCheck(val) {
+  if (val.constructor === Array) {
+    val = sumArray(val);
+  }
+  return val;
+}
+function cashFlow(opts) {
+  var $__1;
+  var $__0 = opts,
+      income = $__0.income,
+      expenses = ($__1 = $__0.expenses) === void 0 ? true : $__1,
+      result = {};
+  enforcePositive(opts);
+  if (!income || !expenses) {
+    throw new Error('Income and expenses are required and must be non-negative.');
+  }
+  result.income = arrayCheck(income);
+  result.expenses = arrayCheck(expenses);
+  result.cash = result.income - result.expenses;
+  return result;
+}
+module.exports = cashFlow;
+
+//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/cash-flow.js
+},{"./utils/enforce/number/positive":6,"./utils/sumArray":8}],2:[function(require,module,exports){
+"use strict";
 var enforceNumber = require('./utils/enforce/number');
 function compoundAnnualGrowthRate(opts) {
   var $__0 = opts,
@@ -19,15 +47,16 @@ function compoundAnnualGrowthRate(opts) {
 module.exports = compoundAnnualGrowthRate;
 
 //# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/compound-annual-growth-rate.js
-},{"./utils/enforce/number":4}],2:[function(require,module,exports){
+},{"./utils/enforce/number":5}],3:[function(require,module,exports){
 "use strict";
 module.exports = {
   'interest': require('./interest'),
+  'cash-flow': require('./cash-flow'),
   'compound-annual-growth-rate': require('./compound-annual-growth-rate')
 };
 
 //# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/index.js
-},{"./compound-annual-growth-rate":1,"./interest":3}],3:[function(require,module,exports){
+},{"./cash-flow":1,"./compound-annual-growth-rate":2,"./interest":4}],4:[function(require,module,exports){
 "use strict";
 var enforcePositive = require('./utils/enforce/number/positive');
 function interest(opts) {
@@ -54,7 +83,7 @@ function interest(opts) {
 module.exports = interest;
 
 //# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/interest.js
-},{"./utils/enforce/number/positive":5}],4:[function(require,module,exports){
+},{"./utils/enforce/number/positive":6}],5:[function(require,module,exports){
 "use strict";
 function enforceNumber(opts) {
   for (var key in opts) {
@@ -69,7 +98,7 @@ function enforceNumber(opts) {
 module.exports = enforceNumber;
 
 //# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/utils/enforce/number/index.js
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 "use strict";
 var processOpts = require('../../processOpts');
 function check(key, val) {
@@ -84,7 +113,7 @@ function enforceNonNegativeNumber(opts) {
 module.exports = enforceNonNegativeNumber;
 
 //# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/utils/enforce/number/positive.js
-},{"../../processOpts":6}],6:[function(require,module,exports){
+},{"../../processOpts":7}],7:[function(require,module,exports){
 "use strict";
 function processOpts(opts, cb) {
   if (opts === Object(opts) && Object.prototype.toString.call(opts) !== '[object Array]') {
@@ -105,5 +134,17 @@ function processOpts(opts, cb) {
 module.exports = processOpts;
 
 //# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/utils/processOpts.js
-},{}]},{},[2])(2)
+},{}],8:[function(require,module,exports){
+"use strict";
+function sumArray(arr) {
+  var total = 0;
+  for (var i = 0; i < arr.length; i++) {
+    total += arr[i];
+  }
+  return total;
+}
+module.exports = sumArray;
+
+//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/utils/sumArray.js
+},{}]},{},[3])(3)
 });
