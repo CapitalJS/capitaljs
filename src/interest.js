@@ -1,8 +1,8 @@
-var utils = require('./utils');
+var enforcePositive = require('./utils/enforce/number/positive');
 
 /**
  * Calculates simple interest.
- * @param {object} Principal, rate (express as a decimal, e.g. 0.05) and years.
+ * @param {object} Principal, interest rate (express as a decimal, e.g. 5% would be 0.05) and years.
  * @returns {object} Amount of interest paid and total amount paid (principal + interest).
  */
 function interest(opts) {
@@ -10,7 +10,7 @@ function interest(opts) {
       result = {};
 
   delete opts.compounding;
-  utils.enforceNonNegative(opts);
+  enforcePositive(opts);
   if (!principal || !rate || !years) {
     throw new Error('Principal, rate and years are required and must be non-negative.');
   }
