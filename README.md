@@ -1,36 +1,28 @@
-# generator-node-capitaljs [![Build Status](https://secure.travis-ci.org/capitaljs/generator-node-capitaljs.png?branch=master)](https://travis-ci.org/capitaljs/generator-node-capitaljs)
-
-> [Yeoman](http://yeoman.io) generator for [Capital.js](http://capitaljs.com) node modules.
-
+# generator-node-capitaljs [![Build Status](https://secure.travis-ci.org/capitaljs/capitaljs.png?branch=master)](https://travis-ci.org/capitaljs/capitaljs)
 
 ## Installation
 
-Install this generator by running: `npm install -g generator-node-capitaljs`.
-
+`npm install capitaljs`.
 
 ## Usage
 
-At the command-line, cd into an empty directory, run this command and follow the prompts.
+```
+var capitaljs = require('capitaljs');
+var moneyz = capitaljs.interest({...});
+```
+
+Or if you just want a single formula:
 
 ```
-yo node-cfpb
+var interest = require('capitaljs/interest');
+var moneyz = interest({...});
 ```
-
-_Note that this template will generate files in the current directory, so be sure to change to a new directory first if you don't want to overwrite existing files._
 
 ## Contributing
 
 Please read the [Contributing guidelines](CONTRIBUTING.md).
 
 ### Running Tests
-
-To run tests, first install [mocha](http://visionmedia.github.io/mocha/) and any dependencies via npm:
-
-```
-npm install
-```
-
-Run tests with:
 
 ```
 npm test
