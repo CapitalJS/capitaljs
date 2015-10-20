@@ -1,0 +1,41 @@
+{
+  "name": "capitaljs",
+  "version": "0.0.1",
+  "description": "Financial formulas in JavaScript",
+  "main": "capital.js",
+  "private": true,
+  "scripts": {
+    "test": "tape test/*.js",
+    "bundle": "browserify src/index.js --standalone capital -t es6ify -o capital.js",
+    "compress": "uglifyjs capital.js -o capital.min.js",
+    "build": "npm run bundle && npm run compress",
+    "posttest": "npm run build",
+    "watch": "onchange 'src/**/*.js' 'test/**/*.js' -v -- npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/capitaljs/capitaljs.git"
+  },
+  "keywords": [
+    "finance",
+    "financial",
+    "algorithm",
+    "formula",
+    "money",
+    "capital"
+  ],
+  "author": "Consumer Financial Protection Bureau",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/capitaljs/capitaljs/issues"
+  },
+  "homepage": "https://github.com/capitaljs/capitaljs#readme",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "browserify": "^11.2.0",
+    "es6ify": "^1.6.0",
+    "onchange": "^2.0.0",
+    "tape": "^4.2.1",
+    "uglify-js": "^2.5.0"
+  }
+}
