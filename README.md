@@ -2,7 +2,7 @@
 
 ## Installation
 
-`npm install capitaljs`.
+`$ npm install capitaljs`.
 
 ## Usage
 
