@@ -22,7 +22,7 @@ function cashflow(opts) {
   let {income, expenses = true} = opts,
       result = {};
 
-  //utils.enforceNonNegative(opts);
+  utils.enforceNonNegative(opts);
   if (!income || !expenses) {
     throw new Error('Income and expenses are required and must be non-negative.');
   }

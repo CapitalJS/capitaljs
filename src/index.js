@@ -1,3 +1,4 @@
 module.exports = {
-  interest: require('./interest')
+  interest: require('./interest'),
+  cashflow: require('./cashflow')
 };
