@@ -1,6 +1,14 @@
-# generator-node-capitaljs [![Build Status](https://secure.travis-ci.org/CapitalJS/capitaljs.png?branch=master)](https://travis-ci.org/CapitalJS/capitaljs)
+# Capital.js [![Build Status](https://secure.travis-ci.org/CapitalJS/capitaljs.png?branch=master)](https://travis-ci.org/CapitalJS/capitaljs)
 
 ## Installation
+
+In a browser:
+
+```
+<script src="capital.js"></script>
+```
+
+Using npm:
 
 ```
 $ npm install capitaljs
@@ -8,16 +16,30 @@ $ npm install capitaljs
 
 ## Usage
 
+In a browser:
+
+```
+var rate = capitaljs.compoundAnnualGrowthRate({...});
+```
+
+In an AMD loader:
+
+```
+require(['capitaljs'], function(capitaljs) {...});
+```
+
+In Node/Browserify:
+
 ```
 var capitaljs = require('capitaljs');
-var moneyz = capitaljs.interest({...});
+var rate = capitaljs.compoundAnnualGrowthRate({...});
 ```
 
 Or if you just want a single formula:
 
 ```
-var interest = require('capitaljs/interest');
-var moneyz = interest({...});
+var cagr = require('capitaljs/compoundAnnualGrowthRate');
+var rate = cagr({...});
 ```
 
 ## Contributing
