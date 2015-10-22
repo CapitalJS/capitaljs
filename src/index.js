@@ -3,5 +3,6 @@ module.exports = {
   'cash-flow': require('./cash-flow'),
   'compound-annual-growth-rate': require('./compound-annual-growth-rate'),
   'inflation-adjusted-return': require('./inflation-adjusted-return'),
-  'amortization': require('./amortization')
+  'amortization': require('./amortization'),
+  'returnOnInvestment': require('./returnOnInvestment')
 };
