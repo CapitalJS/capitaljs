@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Capitaljs by CapitalJS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Capitaljs</h1>
+      <h2 class="project-tagline">Financial formulas in JavaScript</h2>
+      <a href="https://github.com/CapitalJS/capitaljs" class="btn">View on GitHub</a>
+      <a href="https://github.com/CapitalJS/capitaljs/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/CapitalJS/capitaljs/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="capitaljs-" class="anchor" href="#capitaljs-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Capital.js <a href="https://travis-ci.org/CapitalJS/capitaljs"><img src="https://secure.travis-ci.org/CapitalJS/capitaljs.png?branch=master" alt="Build Status"></a>
+</h1>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>In a browser:</p>
+
+<pre><code>&lt;script src="capital.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>Using npm:</p>
+
+<pre><code>$ npm install capitaljs
+</code></pre>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>In a browser:</p>
+
+<pre><code>var rate = capitaljs.compoundAnnualGrowthRate({...});
+</code></pre>
+
+<p>In an AMD loader:</p>
+
+<pre><code>require(['capitaljs'], function(capitaljs) {...});
+</code></pre>
+
+<p>In Node:</p>
+
+<pre><code>var capitaljs = require('capitaljs');
+var rate = capitaljs.compoundAnnualGrowthRate({...});
+</code></pre>
+
+<p>Or if you just want a single formula (to reduce your browser bundle's filesize):</p>
+
+<pre><code>var cagr = require('capitaljs/compoundAnnualGrowthRate');
+var rate = cagr({...});
+</code></pre>
+
+<h2>
+<a id="current-formulae" class="anchor" href="#current-formulae" aria-hidden="true"><span class="octicon octicon-link"></span></a>Current formulae:</h2>
+
+<p>Better docs and examples coming soon.</p>
+
+<pre><code>var amortization = require('capitaljs/amortization');
+
+amortization({
+  amount: 180000,
+  rate: 4.25,
+  totalTerm: 360,
+  amortizeTerm: 60
+});
+</code></pre>
+
+<pre><code>var cash = require('capitaljs/cashFlow');
+
+cash({
+  income: 100000,
+  expenses: 50000
+});
+</code></pre>
+
+<pre><code>var cagr = require('capitaljs/compoundAnnualGrowthRate');
+
+cagr({
+  startValue: 100000,
+  endValue: 50000,
+  years: 10
+});
+</code></pre>
+
+<pre><code>var iar = require('capitaljs/inflationAdjustedReturn');
+
+iar({
+  investmentReturn: .08,
+  inflationRate: .03
+});
+</code></pre>
+
+<pre><code>var interest = require('capitaljs/interest');
+
+interest({
+  principal: 100000,
+  rate: .06,
+  years: 10,
+  compounding: true
+});
+</code></pre>
+
+<pre><code>var roi = require('capitaljs/returnOnInvestment');
+
+roi({
+  earnings: 5000,
+  initialInvestment: 100000
+});
+</code></pre>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Please read the <a href="CONTRIBUTING.md">Contributing guidelines</a>.</p>
+
+<h3>
+<a id="running-tests" class="anchor" href="#running-tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running Tests</h3>
+
+<pre><code>$ npm test
+</code></pre>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>The project is in the public domain within the United States, and
+copyright and related rights in the work worldwide are waived through
+the <a href="http://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal public domain dedication</a>.</p>
+
+<p>All contributions to this project will be released under the CC0
+dedication. By submitting a pull request, you are agreeing to comply
+with this waiver of copyright interest.</p>
+
+<p>Software source code previously released under an open source license and then modified by CFPB staff is considered a "joint work" (see 17 USC § 101); it is partially copyrighted, partially public domain, and as a whole is protected by the copyrights of the non-government authors and must be released according to the terms of the original open-source license.</p>
+
+<p>For further details, please see: <a href="http://www.consumerfinance.gov/developers/sourcecodepolicy/">http://www.consumerfinance.gov/developers/sourcecodepolicy/</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/CapitalJS/capitaljs">Capitaljs</a> is maintained by <a href="https://github.com/CapitalJS">CapitalJS</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
