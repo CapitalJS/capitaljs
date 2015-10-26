@@ -42,6 +42,69 @@ var cagr = require('capitaljs/compoundAnnualGrowthRate');
 var rate = cagr({...});
 ```
 
+## Current formulae:
+
+Better docs and examples coming soon.
+
+```
+var amortization = require('capitaljs/amortization');
+
+amortization({
+  amount: 180000,
+  rate: 4.25,
+  totalTerm: 360,
+  amortizeTerm: 60
+});
+```
+
+```
+var cash = require('capitaljs/cashFlow');
+
+cash({
+  income: 100000,
+  expenses: 50000
+});
+```
+
+```
+var cagr = require('capitaljs/compoundAnnualGrowthRate');
+
+cagr({
+  startValue: 100000,
+  endValue: 50000,
+  years: 10
+});
+```
+
+```
+var iar = require('capitaljs/inflationAdjustedReturn');
+
+iar({
+  investmentReturn: .08,
+  inflationRate: .03
+});
+```
+
+```
+var interest = require('capitaljs/interest');
+
+interest({
+  principal: 100000,
+  rate: .06,
+  years: 10,
+  compounding: true
+});
+```
+
+```
+var roi = require('capitaljs/returnOnInvestment');
+
+roi({
+  earnings: 5000,
+  initialInvestment: 100000
+});
+```
+
 ## Contributing
 
 Please read the [Contributing guidelines](CONTRIBUTING.md).
