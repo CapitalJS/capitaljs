@@ -28,14 +28,14 @@ In an AMD loader:
 require(['capitaljs'], function(capitaljs) {...});
 ```
 
-In Node/Browserify:
+In Node:
 
 ```
 var capitaljs = require('capitaljs');
 var rate = capitaljs.compoundAnnualGrowthRate({...});
 ```
 
-Or if you just want a single formula:
+Or if you just want a single formula (to reduce your browser bundle's filesize):
 
 ```
 var cagr = require('capitaljs/compoundAnnualGrowthRate');

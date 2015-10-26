@@ -1,7 +1,7 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.capital = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.capitaljs = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 "use strict";
-var enforcePositive = require('./utils/enforce/number/positive'),
-    sumArray = require('./utils/sumArray');
+var enforcePositive = _dereq_('./utils/enforce/number/positive'),
+    sumArray = _dereq_('./utils/sumArray');
 function arrayCheck(val) {
   if (val.constructor === Array) {
     val = sumArray(val);
@@ -25,10 +25,10 @@ function cashFlow(opts) {
 }
 module.exports = cashFlow;
 
-//# sourceURL=/Users/scotta/Projects/capitaljs/src/cash-flow.js
-},{"./utils/enforce/number/positive":7,"./utils/sumArray":9}],2:[function(require,module,exports){
+//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/cash-flow.js
+},{"./utils/enforce/number/positive":7,"./utils/sumArray":9}],2:[function(_dereq_,module,exports){
 "use strict";
-var enforceNumber = require('./utils/enforce/number');
+var enforceNumber = _dereq_('./utils/enforce/number');
 function compoundAnnualGrowthRate(opts) {
   var $__0 = opts,
       startValue = $__0.startValue,
@@ -46,18 +46,18 @@ function compoundAnnualGrowthRate(opts) {
 }
 module.exports = compoundAnnualGrowthRate;
 
-//# sourceURL=/Users/scotta/Projects/capitaljs/src/compound-annual-growth-rate.js
-},{"./utils/enforce/number":6}],3:[function(require,module,exports){
+//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/compound-annual-growth-rate.js
+},{"./utils/enforce/number":6}],3:[function(_dereq_,module,exports){
 "use strict";
 module.exports = {
-  'interest': require('./interest'),
-  'cash-flow': require('./cash-flow'),
-  'compound-annual-growth-rate': require('./compound-annual-growth-rate'),
-  'inflation-adjusted-return': require('./inflation-adjusted-return')
+  'interest': _dereq_('./interest'),
+  'cash-flow': _dereq_('./cash-flow'),
+  'compound-annual-growth-rate': _dereq_('./compound-annual-growth-rate'),
+  'inflation-adjusted-return': _dereq_('./inflation-adjusted-return')
 };
 
-//# sourceURL=/Users/scotta/Projects/capitaljs/src/index.js
-},{"./cash-flow":1,"./compound-annual-growth-rate":2,"./inflation-adjusted-return":4,"./interest":5}],4:[function(require,module,exports){
+//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/index.js
+},{"./cash-flow":1,"./compound-annual-growth-rate":2,"./inflation-adjusted-return":4,"./interest":5}],4:[function(_dereq_,module,exports){
 "use strict";
 function inflationAdjustedReturn(opts) {
   var $__1;
@@ -74,10 +74,10 @@ function inflationAdjustedReturn(opts) {
 }
 module.exports = inflationAdjustedReturn;
 
-//# sourceURL=/Users/scotta/Projects/capitaljs/src/inflation-adjusted-return.js
-},{}],5:[function(require,module,exports){
+//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/inflation-adjusted-return.js
+},{}],5:[function(_dereq_,module,exports){
 "use strict";
-var enforcePositive = require('./utils/enforce/number/positive');
+var enforcePositive = _dereq_('./utils/enforce/number/positive');
 function interest(opts) {
   var $__1;
   var $__0 = opts,
@@ -101,8 +101,8 @@ function interest(opts) {
 }
 module.exports = interest;
 
-//# sourceURL=/Users/scotta/Projects/capitaljs/src/interest.js
-},{"./utils/enforce/number/positive":7}],6:[function(require,module,exports){
+//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/interest.js
+},{"./utils/enforce/number/positive":7}],6:[function(_dereq_,module,exports){
 "use strict";
 function enforceNumber(opts) {
   for (var key in opts) {
@@ -116,10 +116,10 @@ function enforceNumber(opts) {
 ;
 module.exports = enforceNumber;
 
-//# sourceURL=/Users/scotta/Projects/capitaljs/src/utils/enforce/number/index.js
-},{}],7:[function(require,module,exports){
+//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/utils/enforce/number/index.js
+},{}],7:[function(_dereq_,module,exports){
 "use strict";
-var processOpts = require('../../processOpts');
+var processOpts = _dereq_('../../processOpts');
 function check(key, val) {
   if (typeof val === 'undefined' || isNaN(parseFloat(val)) || val < 0) {
     throw new Error(key + ' must be a non-negative value.');
@@ -131,8 +131,8 @@ function enforceNonNegativeNumber(opts) {
 ;
 module.exports = enforceNonNegativeNumber;
 
-//# sourceURL=/Users/scotta/Projects/capitaljs/src/utils/enforce/number/positive.js
-},{"../../processOpts":8}],8:[function(require,module,exports){
+//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/utils/enforce/number/positive.js
+},{"../../processOpts":8}],8:[function(_dereq_,module,exports){
 "use strict";
 function processOpts(opts, cb) {
   if (opts === Object(opts) && Object.prototype.toString.call(opts) !== '[object Array]') {
@@ -152,8 +152,8 @@ function processOpts(opts, cb) {
 ;
 module.exports = processOpts;
 
-//# sourceURL=/Users/scotta/Projects/capitaljs/src/utils/processOpts.js
-},{}],9:[function(require,module,exports){
+//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/utils/processOpts.js
+},{}],9:[function(_dereq_,module,exports){
 "use strict";
 function sumArray(arr) {
   var total = 0;
@@ -164,6 +164,6 @@ function sumArray(arr) {
 }
 module.exports = sumArray;
 
-//# sourceURL=/Users/scotta/Projects/capitaljs/src/utils/sumArray.js
+//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/utils/sumArray.js
 },{}]},{},[3])(3)
 });

@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "test": "tape test/*.js | faucet",
-    "bundle": "browserify src/index.js --standalone capitaljs -t es6ify -o capital.js",
+    "bundle": "browserify src/index.js --standalone capitaljs -t es6ify | derequire > capital.js",
     "compress": "uglifyjs capital.js -o capital.min.js",
     "build": "npm run bundle && npm run compress",
     "posttest": "npm run build",
@@ -33,6 +33,7 @@
   "devDependencies": {
     "babel": "^5.8.23",
     "browserify": "^11.2.0",
+    "derequire": "^2.0.2",
     "es6ify": "^1.6.0",
     "faucet": "0.0.1",
     "onchange": "^2.0.0",
