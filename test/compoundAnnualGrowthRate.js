@@ -1,7 +1,7 @@
 require('babel/register');
 
 var test = require('tape'),
-    cagr = require('../src/compound-annual-growth-rate');
+    cagr = require('../src/compoundAnnualGrowthRate');
 
 test('CAGR calculation', function(t) {
 

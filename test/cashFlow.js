@@ -1,7 +1,7 @@
 require('babel/register');
 
 var test = require('tape'),
-    cashflow = require('../src/cash-flow');
+    cashflow = require('../src/cashFlow');
 
 test('calculate the cash flow', function(t) {
   t.plan(6);

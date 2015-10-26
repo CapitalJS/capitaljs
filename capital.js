@@ -139,7 +139,7 @@ function cashFlow(opts) {
 }
 module.exports = cashFlow;
 
-//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/cash-flow.js
+//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/cashFlow.js
 },{"./utils/enforce/number/positive":10,"./utils/sumArray":12}],4:[function(_dereq_,module,exports){
 "use strict";
 var enforceNumber = _dereq_('./utils/enforce/number');
@@ -160,20 +160,20 @@ function compoundAnnualGrowthRate(opts) {
 }
 module.exports = compoundAnnualGrowthRate;
 
-//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/compound-annual-growth-rate.js
+//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/compoundAnnualGrowthRate.js
 },{"./utils/enforce/number":9}],5:[function(_dereq_,module,exports){
 "use strict";
 module.exports = {
   'interest': _dereq_('./interest'),
-  'cash-flow': _dereq_('./cash-flow'),
-  'compound-annual-growth-rate': _dereq_('./compound-annual-growth-rate'),
-  'inflation-adjusted-return': _dereq_('./inflation-adjusted-return'),
+  'cashFlow': _dereq_('./cashFlow'),
+  'compoundAnnualGrowthRate': _dereq_('./compoundAnnualGrowthRate'),
+  'inflationAdjustedReturn': _dereq_('./inflationAdjustedReturn'),
   'amortization': _dereq_('./amortization'),
   'returnOnInvestment': _dereq_('./returnOnInvestment')
 };
 
 //# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/index.js
-},{"./amortization":2,"./cash-flow":3,"./compound-annual-growth-rate":4,"./inflation-adjusted-return":6,"./interest":7,"./returnOnInvestment":8}],6:[function(_dereq_,module,exports){
+},{"./amortization":2,"./cashFlow":3,"./compoundAnnualGrowthRate":4,"./inflationAdjustedReturn":6,"./interest":7,"./returnOnInvestment":8}],6:[function(_dereq_,module,exports){
 "use strict";
 function inflationAdjustedReturn(opts) {
   var $__1;
@@ -190,7 +190,7 @@ function inflationAdjustedReturn(opts) {
 }
 module.exports = inflationAdjustedReturn;
 
-//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/inflation-adjusted-return.js
+//# sourceURL=/Users/contolinic/Sites/capitaljs/capitaljs/src/inflationAdjustedReturn.js
 },{}],7:[function(_dereq_,module,exports){
 "use strict";
 var enforcePositive = _dereq_('./utils/enforce/number/positive');

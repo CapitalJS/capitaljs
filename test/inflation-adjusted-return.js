@@ -1,7 +1,7 @@
 require('babel/register');
 
 var test = require('tape'),
-    adjReturn = require('../src/inflation-adjusted-return');
+    adjReturn = require('../src/inflationAdjustedReturn');
 
 test('calculate inflation adjusted return', function(t) {
   t.plan(1);
