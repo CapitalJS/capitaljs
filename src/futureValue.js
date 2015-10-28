@@ -1,4 +1,4 @@
-var enforcePositive = require('./utils/enforce/number/positive');
+var interest = require('./interest');
 
 /**
  * Calculates the future value of an asset in the future that is equivalent in value to a specified sum today
@@ -6,7 +6,9 @@ var enforcePositive = require('./utils/enforce/number/positive');
  * @returns {number} future value
  */
 function futureValue(opts) {
-  return 1500;
+  var calc1 = interest(opts);
+  // {object} Amount of interest paid and total amount paid (principal + interest).
+  return calc1.total;
 }
 
 module.exports = futureValue;
