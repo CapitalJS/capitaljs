@@ -1,8 +1,8 @@
 var enforcePositive = require('./utils/enforce/number/positive');
 
 /**
- * Calculates simple interest.
- * @param {object} Principal, interest rate (express as a decimal, e.g. 5% would be 0.05) and years.
+ * Calculates simple or compound interest.
+ * @param {object} Principal, interest rate (express as a decimal, e.g. 5% would be 0.05), years, compound (true or false).
  * @returns {object} Amount of interest paid and total amount paid (principal + interest).
  */
 function interest(opts) {
