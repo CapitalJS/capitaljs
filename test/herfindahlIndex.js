@@ -4,7 +4,7 @@ var test = require('tape'),
     herfindahlIndex = require('../src/herfindahlIndex');
 
 test('calculate Herfindahl Index', function(t) {
-  t.plan(5);
+  t.plan(8);
 
   var calc1 = herfindahlIndex([30, 60]);
 
@@ -19,11 +19,37 @@ test('calculate Herfindahl Index', function(t) {
   t.equal(calc3, 10000, 'correctly calculates Herfindahl-Hirschman Index of a monopoly');
 
   t.throws(function() {
-      herfindahlIndex('not a number');
-    }, 'throws with non-number arg');
+    herfindahlIndex([1, 'not a number']);
+  },
+  // /^Value must be a number\.$/,
+  Error('Kittens must be a number.'),
+  'throws with non-number array items');
 
-    t.throws(function() {
+  t.throws(function() {
       herfindahlIndex();
-    }, 'throws with missing arg');
+    },
+  Error('Market share array is required and must consist of numbers.'),
+  'throws with missing arg');
+
+  t.throws(function() {
+      herfindahlIndex('cats');
+    },
+  // Error('fakerror'),
+  Error('Market share array is required and must consist of numbers.'),
+  'throws with string arg');
+
+  t.throws(function() {
+      herfindahlIndex(100);
+    },
+  Error('Market share array is required and must consist of numbers.'),
+  'throws with non-array number arg');
+
+  var pancakes = {};
+
+  t.throws(function() {
+    herfindahlIndex(pancakes);
+  },
+  Error('Market share array is required and must consist of numbers.'),
+  'throws with object arg');
 
 });

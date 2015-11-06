@@ -1,5 +1,3 @@
-var enforceNumber = require('./utils/enforce/number');
-
 /**
  * Calculates Herfindahl-Hirschman Index, a measure of market concentration and competition, used by U.S. governments for antitrust enforcement.
  * @param {array} marketShare (expressed as percentage value for each firm)
@@ -9,13 +7,18 @@ var enforceNumber = require('./utils/enforce/number');
 function herfindahlIndex(marketShare) {
   var result = 0;
 
-  enforceNumber(marketShare);
-  if (!marketShare) {
+  if (!marketShare || !Array.isArray(marketShare)) {
     throw new Error('Market share array is required and must consist of numbers.');
   }
 
   for (var i = 0; i < marketShare.length; i++) {
-    result += marketShare[i]*marketShare[i];
+    var share = marketShare[i];
+
+    if (typeof share === 'undefined' || isNaN(parseFloat(share))) {
+      throw new TypeError('Value must be a number.');
+    }
+
+    result += share*share;
   }
 
   return result;
