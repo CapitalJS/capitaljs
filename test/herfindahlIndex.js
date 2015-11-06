@@ -4,7 +4,7 @@ var test = require('tape'),
     futureValue = require('../src/futureValue');
 
 test('calculate futureValue', function(t) {
-  t.plan(3);
+  t.plan(1);
 
 
 // The Herfindahl Index is a measure of the size of firms in relation to the industry and an indicator of the amount of competition among them
