@@ -1,9 +1,9 @@
 var enforceNumber = require('./utils/enforce/number');
 
 /**
- * Calculates simple interest.
- * @param {object} Principal, interest rate (express as a decimal, e.g. 5% would be 0.05) and years.
- * @returns {object} Amount of interest paid and total amount paid (principal + interest).
+ * Calculates the mean annual growth rate of an investment over a specified period of time.
+ * @param {object} Start value, end value, years.
+ * @returns {object} Rate of growth (raw, rounded, and percent values)
  */
 function compoundAnnualGrowthRate(opts) {
   let {startValue, endValue, years} = opts,
