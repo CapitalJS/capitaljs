@@ -1,27 +1,29 @@
 require('babel/register');
 
 var test = require('tape'),
-    futureValue = require('../src/futureValue');
+    herfindahlIndex = require('../src/herfindahlIndex');
 
-test('calculate futureValue', function(t) {
-  t.plan(3);
+test('calculate Herfindahl Index', function(t) {
+  t.plan(5);
 
+  var calc1 = herfindahlIndex([30, 60]);
 
-// The Herfindahl Index is a measure of the size of firms in relation to the industry and an indicator of the amount of competition among them
+  t.equal(calc1, 4500, 'correctly calculates Herfindahl-Hirschman Index');
 
-  var calc1 = futureValue({
-    compounding: false,
-    rate: 0.10,
-    principal: 1000,
-    years: 5
-  });
+  var calc2 = herfindahlIndex([30, 30, 20, 20]);
 
-  t.equal(calc1, 1500, 'correctly calculates future Value with simple interest');
+  t.equal(calc2, 2600, 'correctly calculates Herfindahl-Hirschman Index');
 
-// HHI = s1^2 + s2^2 + s3^2 + ... + sn^2 (where sn is the market share of the ith firm).
+  var calc3 = herfindahlIndex([100]);
 
+  t.equal(calc3, 10000, 'correctly calculates Herfindahl-Hirschman Index');
 
+  t.throws(function() {
+      herfindahlIndex('not a number');
+    }, 'throws with non-number arg');
 
-// Read more: Herfindahl-Hirschman Index (HHI) Definition | Investopedia http://www.investopedia.com/terms/h/hhi.asp#ixzz3pq3k9iHA
+    t.throws(function() {
+      herfindahlIndex();
+    }, 'throws with missing arg');
 
 });
