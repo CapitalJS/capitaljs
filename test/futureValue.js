@@ -4,9 +4,8 @@ var test = require('tape'),
     futureValue = require('../src/futureValue');
 
 test('calculate futureValue', function(t) {
-  t.plan(3);
 
-
+  t.plan(4);
 // $1000 invested for 5 years with simple annual interest of 10% would have a future value of $1,500.00.
 
   var calc1 = futureValue({
@@ -30,6 +29,7 @@ test('calculate futureValue', function(t) {
   var calc3 = futureValue({
     compounding: true,
     rate: 0.10,
+    numberOfCompounds: 1,
     principal: 1000,
     years: 5
   });
@@ -37,5 +37,15 @@ test('calculate futureValue', function(t) {
   // Original Investment x ((1+interest rate)^number of years);
   // 1000 * ((1+0.10)^5)
   t.equal(calc3, 1610.51, 'correctly calculates future value with compound interest');
+
+  var calc4 = futureValue({
+    compounding: true,
+    rate: 0.10,
+    numberOfCompounds: 4,
+    principal: 1000,
+    years: 5
+  });
+
+  t.equal(calc4, 1638.62, 'correctly calculates future value with compound interest' );
 
 });
