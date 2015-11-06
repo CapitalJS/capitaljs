@@ -9,9 +9,8 @@ test('interest calculation', function(t) {
 
     var calc1 = interest({
       principal: 10000,
-      rate: .05,
-      years: 10,
-      compounding: false
+      rate: 5,
+      periods: 10
     });
 
     t.equal(calc1.interest, 5000, 'correctly calculates simple interest');
@@ -19,9 +18,8 @@ test('interest calculation', function(t) {
 
     var calc2 = interest({
       principal: 123456789,
-      rate: .123456789,
-      years: 123456789,
-      compounding: false
+      rate: 12.3456789,
+      periods: 123456789
     });
 
     t.equal(calc2.interest, 1881676371789154.8, 'correctly calculates simple interest');
@@ -29,42 +27,44 @@ test('interest calculation', function(t) {
 
     var calc3 = interest({
       principal: 10000,
-      rate: .05,
-      years: 10
+      rate: 5,
+      periods: 10,
+      compoundings: 12
     });
 
-    t.equal(calc3.interest, 6487.212707001283, 'correctly calculates continuously compounding interest');
-    t.equal(calc3.total, 16487.212707001283, 'correctly calculates continuously compounding total amount paid');
+    t.equal(calc3.interest, 6470.09, 'correctly calculates compounding interest');
+    t.equal(calc3.total, 16470.09, 'correctly calculates compounding total amount paid');
 
     var calc4 = interest({
       principal: 12345,
-      rate: .12345,
-      years: 123
+      rate: 12.345,
+      periods: 123,
+      compoundings: 12
     });
 
-    t.equal(calc4.interest, 48525542579.29045, 'correctly calculates continuously compounding interest');
-    t.equal(calc4.total, 48525554924.29045, 'correctly calculates continuously compounding total amount paid');
+    t.equal(calc4.interest, 44903572488.03, 'correctly calculates compounding interest');
+    t.equal(calc4.total, 44903584833.03, 'correctly calculates compounding total amount paid');
 
     t.throws(function() {
       interest({
         principal: -10000,
-        rate: .05,
-        years: 10
+        rate: 5,
+        periods: 10
       });
     }, 'throws with negative arg');
 
     t.throws(function() {
       interest({
         principal: 'party town',
-        rate: .05,
-        years: 10
+        rate: 5,
+        periods: 10
       });
     }, 'throws with non-number arg');
 
     t.throws(function() {
       interest({
         principal: 10000,
-        rate: .05
+        rate: 5
       });
     }, 'throws with missing arg');
 
