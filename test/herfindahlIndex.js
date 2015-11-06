@@ -21,27 +21,24 @@ test('calculate Herfindahl Index', function(t) {
   t.throws(function() {
     herfindahlIndex([1, 'not a number']);
   },
-  // /^Value must be a number\.$/,
-  Error('Kittens must be a number.'),
+  /Value must be a number\./,
   'throws with non-number array items');
 
   t.throws(function() {
       herfindahlIndex();
     },
-  Error('Market share array is required and must consist of numbers.'),
+    /Market share array is required and must consist of numbers\./,
   'throws with missing arg');
 
   t.throws(function() {
       herfindahlIndex('cats');
     },
-  // Error('fakerror'),
-  Error('Market share array is required and must consist of numbers.'),
   'throws with string arg');
 
   t.throws(function() {
       herfindahlIndex(100);
     },
-  Error('Market share array is required and must consist of numbers.'),
+  /Market share array is required and must consist of numbers\./,
   'throws with non-array number arg');
 
   var pancakes = {};
@@ -49,7 +46,7 @@ test('calculate Herfindahl Index', function(t) {
   t.throws(function() {
     herfindahlIndex(pancakes);
   },
-  Error('Market share array is required and must consist of numbers.'),
+  /Market share array is required and must consist of numbers\./,
   'throws with object arg');
 
 });
