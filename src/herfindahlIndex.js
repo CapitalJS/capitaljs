@@ -15,7 +15,6 @@ function herfindahlIndex(marketShare) {
   }
 
   for (var i = 0; i < marketShare.length; i++) {
-    console.log(marketShare[i])
     result += marketShare[i]*marketShare[i];
   }
 
