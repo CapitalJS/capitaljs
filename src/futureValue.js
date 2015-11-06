@@ -2,7 +2,7 @@ var interest = require('./interest');
 
 /**
  * Calculates the future value of an asset in the future that is equivalent in value to a specified sum today
- * @param {object} rate, startValue, years, compound(optional)
+ * @param {object} rate, principal, periods, compoundings (optional)
  * @returns {number} future value
  */
 function futureValue(opts) {
