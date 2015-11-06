@@ -17,17 +17,16 @@ test('ROI calculation', function(t) {
     t.equal(calc1.percent, 57.07, 'correctly calculates rounded ROI as percentage');
 
     t.throws(function() {
-      cagr({
-        startValue: 'foo',
-        endValue: 15000,
-        years: 5
+      roi({
+        earnings: 'it smells like cookies',
+        initialInvestment: 2045
       });
-    }, 'throws with non-number arg');
+    },
+    'throws with non-number arg');
 
     t.throws(function() {
-      cagr({
-        startValue: 10000,
-        endValue: 15000
+      roi({
+        initialInvestment: 2045
       });
     }, 'throws with missing arg');
 
