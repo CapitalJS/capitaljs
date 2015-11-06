@@ -26,18 +26,18 @@ test('calculate Herfindahl Index', function(t) {
 
   t.throws(function() {
       herfindahlIndex();
-    },
+  },
     /Market share array is required and must consist of numbers\./,
   'throws with missing arg');
 
   t.throws(function() {
       herfindahlIndex('cats');
-    },
+  },
   'throws with string arg');
 
   t.throws(function() {
       herfindahlIndex(100);
-    },
+  },
   /Market share array is required and must consist of numbers\./,
   'throws with non-array number arg');
 
