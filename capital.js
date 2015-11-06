@@ -195,24 +195,25 @@ module.exports = inflationAdjustedReturn;
 "use strict";
 var enforcePositive = _dereq_('./utils/enforce/number/positive');
 function interest(opts) {
-  var $__1;
   var $__0 = opts,
       principal = $__0.principal,
       rate = $__0.rate,
-      years = $__0.years,
-      compounding = ($__1 = $__0.compounding) === void 0 ? true : $__1,
+      periods = $__0.periods,
+      compoundings = $__0.compoundings,
       result = {};
   delete opts.compounding;
+  delete opts.compoundingsPerPeriod;
   enforcePositive(opts);
-  if (!principal || !rate || !years) {
-    throw new Error('Principal, rate and years are required and must be non-negative.');
+  if (!principal || !rate || !periods) {
+    throw new Error('Principal, rate and number of periods are required and must be non-negative.');
   }
-  if (compounding) {
-    result.interest = principal * Math.pow(Math.E, rate * years) - principal;
+  if (compoundings) {
+    result.total = Math.pow((1 + ((rate / 100) / compoundings)), compoundings * periods) * principal;
+    result.total = Math.round(result.total * 100) / 100;
   } else {
-    result.interest = principal * rate * years;
+    result.total = principal * (1 + ((rate / 100) * periods));
   }
-  result.total = principal + result.interest;
+  result.interest = result.total - principal;
   return result;
 }
 module.exports = interest;

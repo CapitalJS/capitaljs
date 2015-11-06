@@ -2,25 +2,29 @@ var enforcePositive = require('./utils/enforce/number/positive');
 
 /**
  * Calculates simple or compound interest.
- * @param {object} Principal, interest rate (express as a decimal, e.g. 5% would be 0.05), years, compound (true or false).
+ * @param {object} Principal, interest rate (express as an integery, e.g. 5% would be 5), periods is the number of periods, compoundings is the number of times it is compounded per period (12 would be monthly, 4 quarterly, 1 yearly)
  * @returns {object} Amount of interest paid and total amount paid (principal + interest).
  */
 function interest(opts) {
-  let {principal, rate, years, compounding = true} = opts,
+  let {principal, rate, periods, compoundings} = opts,
       result = {};
-
   delete opts.compounding;
+  delete opts.compoundingsPerPeriod;
+
   enforcePositive(opts);
-  if (!principal || !rate || !years) {
-    throw new Error('Principal, rate and years are required and must be non-negative.');
+  if (!principal || !rate || !periods) {
+    throw new Error('Principal, rate and number of periods are required and must be non-negative.');
   }
 
-  if (compounding) {
-    result.interest = principal * Math.pow(Math.E, rate * years) - principal;
+  if (compoundings) {
+    // Compound interest => Future Value = P(1 + r/n)^nt
+    result.total = Math.pow((1 + ((rate/100)/ compoundings)), compoundings * periods) * principal;
+    result.total = Math.round(result.total * 100) / 100 // round to two decimal places
   } else {
-    result.interest = principal * rate * years;
+    // Simple interest => Future Value = P(1 + rt)
+    result.total = principal * (1 + ((rate/100) * periods));
   }
-  result.total = principal + result.interest;
+  result.interest = result.total - principal;
 
   return result;
 }
