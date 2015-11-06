@@ -1,27 +1,52 @@
 require('babel/register');
 
 var test = require('tape'),
-    futureValue = require('../src/futureValue');
+    herfindahlIndex = require('../src/herfindahlIndex');
 
-// test('calculate futureValue', function(t) {
-//   t.plan(1);
+test('calculate Herfindahl Index', function(t) {
+  t.plan(8);
 
+  var calc1 = herfindahlIndex([30, 60]);
 
-// The Herfindahl Index is a measure of the size of firms in relation to the industry and an indicator of the amount of competition among them
+  t.equal(calc1, 4500, 'correctly calculates Herfindahl-Hirschman Index of 2 firms with 30% and 60% market share');
 
-//   var calc1 = futureValue({
-//     compounding: false,
-//     rate: 0.10,
-//     principal: 1000,
-//     periods: 5
-//   });
+  var calc2 = herfindahlIndex([30, 30, 20, 20]);
 
-//   t.equal(calc1, 1500, 'correctly calculates future Value with simple interest');
+  t.equal(calc2, 2600, 'correctly calculates Herfindahl-Hirschman Index of 4 firms with 30%, 30%, 20%, 20% market share');
 
-// HHI = s1^2 + s2^2 + s3^2 + ... + sn^2 (where sn is the market share of the ith firm).
+  var calc3 = herfindahlIndex([100]);
 
+  t.equal(calc3, 10000, 'correctly calculates Herfindahl-Hirschman Index of a monopoly');
 
+  t.throws(function() {
+    herfindahlIndex([1, 'not a number']);
+  },
+  /Value must be a number\./,
+  'throws with non-number array items');
 
-// Read more: Herfindahl-Hirschman Index (HHI) Definition | Investopedia http://www.investopedia.com/terms/h/hhi.asp#ixzz3pq3k9iHA
+  t.throws(function() {
+      herfindahlIndex();
+  },
+    /Market share array is required and must consist of numbers\./,
+  'throws with missing arg');
 
-// });
+  t.throws(function() {
+      herfindahlIndex('cats');
+  },
+  'throws with string arg');
+
+  t.throws(function() {
+      herfindahlIndex(100);
+  },
+  /Market share array is required and must consist of numbers\./,
+  'throws with non-array number arg');
+
+  var pancakes = {};
+
+  t.throws(function() {
+    herfindahlIndex(pancakes);
+  },
+  /Market share array is required and must consist of numbers\./,
+  'throws with object arg');
+
+});
