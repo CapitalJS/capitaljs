@@ -3,14 +3,14 @@
   "version": "0.0.1",
   "description": "Financial formulas in JavaScript",
   "main": "lib/index.js",
-  "private": true,
   "scripts": {
     "test": "tape test/*.js | faucet",
     "bundle": "browserify src/index.js --standalone capitaljs -t es6ify | derequire > capital.js",
     "compress": "uglifyjs capital.js -o capital.min.js",
     "build": "npm run bundle && npm run compress",
     "babel-build": "babel src -d lib",
-    "prepublish": "npm run babel-build",
+    "prepublish": "cp .gitignore .npmignore && echo 'lib/' >> .npmignore",
+    "postpublish": "rm .npmignore",
     "posttest": "npm run build",
     "watch": "onchange 'src/**/*.js' 'test/**/*.js' -v -- npm test"
   },
