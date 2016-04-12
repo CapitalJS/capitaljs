@@ -71,6 +71,7 @@ coverage.xml
 
 # Front-End #
 #############
+.npmignore
 node_modules/
 lib/
 capital.min.js
