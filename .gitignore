@@ -74,5 +74,3 @@ coverage.xml
 .npmignore
 node_modules/
 lib/
-capital.min.js
-capital.js
