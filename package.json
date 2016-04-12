@@ -9,7 +9,7 @@
     "compress": "uglifyjs capital.js -o capital.min.js",
     "build": "npm run bundle && npm run compress",
     "babel-build": "babel src -d lib",
-    "prepublish": "cp .gitignore .npmignore && sed -i '' '/lib/d' .npmignore",
+    "prepublish": "not-in-install && cp .gitignore .npmignore && sed -i '' '/lib/d' .npmignore || in-install",
     "postpublish": "rm .npmignore",
     "posttest": "npm run build",
     "watch": "onchange 'src/**/*.js' 'test/**/*.js' -v -- npm test"
@@ -40,6 +40,7 @@
     "browserify": "13.0.0",
     "derequire": "2.0.2",
     "faucet": "0.0.1",
+    "in-publish": "2.0.0",
     "onchange": "2.0.0",
     "tape": "4.2.1",
     "uglify-js": "2.5.0"
@@ -55,9 +56,5 @@
         }
       ]
     ]
-  },
-  "dependencies": {
-    "babel": "6.5.2",
-    "babel-register": "6.7.2"
   }
 }

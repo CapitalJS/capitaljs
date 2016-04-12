@@ -107,11 +107,6 @@
       "from": "async-each@>=0.1.5 <0.2.0",
       "resolved": "http://registry.npmjs.org/async-each/-/async-each-0.1.6.tgz"
     },
-    "babel": {
-      "version": "6.5.2",
-      "from": "babel@6.5.2",
-      "resolved": "https://registry.npmjs.org/babel/-/babel-6.5.2.tgz"
-    },
     "babel-code-frame": {
       "version": "6.1.18",
       "from": "babel-code-frame@>=6.1.18 <7.0.0",
@@ -289,19 +284,23 @@
       "dependencies": {
         "babel-code-frame": {
           "version": "6.7.5",
-          "from": "babel-code-frame@>=6.7.5 <7.0.0"
+          "from": "babel-code-frame@6.7.5",
+          "resolved": "https://registry.npmjs.org/babel-code-frame/-/babel-code-frame-6.7.5.tgz"
         },
         "babel-messages": {
           "version": "6.7.2",
-          "from": "babel-messages@>=6.7.2 <7.0.0"
+          "from": "babel-messages@6.7.2",
+          "resolved": "https://registry.npmjs.org/babel-messages/-/babel-messages-6.7.2.tgz"
         },
         "babel-traverse": {
           "version": "6.7.6",
-          "from": "babel-traverse@>=6.7.2 <7.0.0"
+          "from": "babel-traverse@6.7.6",
+          "resolved": "https://registry.npmjs.org/babel-traverse/-/babel-traverse-6.7.6.tgz"
         },
         "babel-types": {
           "version": "6.7.2",
-          "from": "babel-types@>=6.6.5 <7.0.0"
+          "from": "babel-types@6.7.2",
+          "resolved": "https://registry.npmjs.org/babel-types/-/babel-types-6.7.2.tgz"
         }
       }
     },
@@ -366,23 +365,28 @@
       "dependencies": {
         "babel-code-frame": {
           "version": "6.7.5",
-          "from": "babel-code-frame@>=6.7.5 <7.0.0"
+          "from": "babel-code-frame@6.7.5",
+          "resolved": "https://registry.npmjs.org/babel-code-frame/-/babel-code-frame-6.7.5.tgz"
         },
         "babel-messages": {
           "version": "6.7.2",
-          "from": "babel-messages@>=6.6.5 <7.0.0"
+          "from": "babel-messages@6.7.2",
+          "resolved": "https://registry.npmjs.org/babel-messages/-/babel-messages-6.7.2.tgz"
         },
         "babel-template": {
           "version": "6.7.0",
-          "from": "babel-template@>=6.7.0 <7.0.0"
+          "from": "babel-template@6.7.0",
+          "resolved": "https://registry.npmjs.org/babel-template/-/babel-template-6.7.0.tgz"
         },
         "babel-traverse": {
           "version": "6.7.6",
-          "from": "babel-traverse@>=6.7.0 <7.0.0"
+          "from": "babel-traverse@6.7.6",
+          "resolved": "https://registry.npmjs.org/babel-traverse/-/babel-traverse-6.7.6.tgz"
         },
         "babel-types": {
           "version": "6.7.2",
-          "from": "babel-types@>=6.7.0 <7.0.0"
+          "from": "babel-types@6.7.2",
+          "resolved": "https://registry.npmjs.org/babel-types/-/babel-types-6.7.2.tgz"
         }
       }
     },
@@ -750,49 +754,10 @@
         }
       }
     },
-    "babel-register": {
-      "version": "6.7.2",
-      "from": "babel-register@latest",
-      "resolved": "https://registry.npmjs.org/babel-register/-/babel-register-6.7.2.tgz",
-      "dependencies": {
-        "core-js": {
-          "version": "2.2.2",
-          "from": "core-js@>=2.1.0 <3.0.0",
-          "resolved": "https://registry.npmjs.org/core-js/-/core-js-2.2.2.tgz"
-        }
-      }
-    },
     "babel-runtime": {
       "version": "5.8.34",
       "from": "babel-runtime@>=5.0.0 <6.0.0",
       "resolved": "http://registry.npmjs.org/babel-runtime/-/babel-runtime-5.8.34.tgz"
-    },
-    "babel-template": {
-      "version": "6.7.0",
-      "from": "babel-template@>=6.3.0 <7.0.0",
-      "resolved": "https://registry.npmjs.org/babel-template/-/babel-template-6.7.0.tgz",
-      "dependencies": {
-        "babel-code-frame": {
-          "version": "6.7.5",
-          "from": "babel-code-frame@>=6.7.5 <7.0.0",
-          "resolved": "https://registry.npmjs.org/babel-code-frame/-/babel-code-frame-6.7.5.tgz"
-        },
-        "babel-messages": {
-          "version": "6.7.2",
-          "from": "babel-messages@>=6.7.2 <7.0.0",
-          "resolved": "https://registry.npmjs.org/babel-messages/-/babel-messages-6.7.2.tgz"
-        },
-        "babel-traverse": {
-          "version": "6.7.6",
-          "from": "babel-traverse@>=6.7.0 <7.0.0",
-          "resolved": "https://registry.npmjs.org/babel-traverse/-/babel-traverse-6.7.6.tgz"
-        },
-        "babel-types": {
-          "version": "6.7.2",
-          "from": "babel-types@>=6.7.0 <7.0.0",
-          "resolved": "https://registry.npmjs.org/babel-types/-/babel-types-6.7.2.tgz"
-        }
-      }
     },
     "babel-traverse": {
       "version": "6.2.0",
@@ -801,7 +766,8 @@
       "dependencies": {
         "babylon": {
           "version": "6.3.0",
-          "from": "babylon@>=6.2.0 <7.0.0"
+          "from": "babylon@6.3.0",
+          "resolved": "http://registry.npmjs.org/babylon/-/babylon-6.3.0.tgz"
         },
         "globals": {
           "version": "8.14.0",
@@ -977,11 +943,6 @@
           "resolved": "http://registry.npmjs.org/source-map/-/source-map-0.4.2.tgz"
         }
       }
-    },
-    "commander": {
-      "version": "2.9.0",
-      "from": "commander@>=2.6.0 <3.0.0",
-      "resolved": "http://registry.npmjs.org/commander/-/commander-2.9.0.tgz"
     },
     "concat-map": {
       "version": "0.0.1",
@@ -1615,7 +1576,8 @@
       "dependencies": {
         "concat-stream": {
           "version": "1.5.1",
-          "from": "concat-stream@>=1.5.0 <1.6.0"
+          "from": "concat-stream@1.5.1",
+          "resolved": "http://registry.npmjs.org/concat-stream/-/concat-stream-1.5.1.tgz"
         }
       }
     },
@@ -1874,16 +1836,6 @@
       "version": "1.0.1",
       "from": "ripemd160@>=1.0.0 <2.0.0",
       "resolved": "http://registry.npmjs.org/ripemd160/-/ripemd160-1.0.1.tgz"
-    },
-    "rsvp": {
-      "version": "3.1.0",
-      "from": "rsvp@>=3.0.13 <4.0.0",
-      "resolved": "http://registry.npmjs.org/rsvp/-/rsvp-3.1.0.tgz"
-    },
-    "semver": {
-      "version": "2.3.2",
-      "from": "semver@>=2.0.0 <3.0.0",
-      "resolved": "http://registry.npmjs.org/semver/-/semver-2.3.2.tgz"
     },
     "sha.js": {
       "version": "2.4.5",
