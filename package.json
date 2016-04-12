@@ -1,6 +1,6 @@
 {
   "name": "capitaljs",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Financial formulas in JavaScript",
   "main": "lib/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "compress": "uglifyjs capital.js -o capital.min.js",
     "build": "npm run bundle && npm run compress",
     "babel-build": "babel src -d lib",
-    "prepublish": "cp .gitignore .npmignore && sed -i '' '/lib//d' .npmignore",
+    "prepublish": "cp .gitignore .npmignore && sed -i '' '/lib/d' .npmignore",
     "postpublish": "rm .npmignore",
     "posttest": "npm run build",
     "watch": "onchange 'src/**/*.js' 'test/**/*.js' -v -- npm test"
