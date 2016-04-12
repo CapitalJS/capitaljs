@@ -1,4 +1,6 @@
-require('babel/register');
+require('babel-register')({
+  presets: [ 'es2015' ]
+});
 
 var test = require('tape'),
     roi = require('../src/returnOnInvestment');
