@@ -1,6 +1,6 @@
 {
   "name": "capitaljs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Financial formulas in JavaScript",
   "main": "lib/index.js",
   "scripts": {
