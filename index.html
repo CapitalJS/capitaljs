@@ -20,139 +20,606 @@
 
     <section class="main-content">
       <h1>
-<a id="capitaljs-" class="anchor" href="#capitaljs-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Capital.js <a href="https://travis-ci.org/CapitalJS/capitaljs"><img src="https://secure.travis-ci.org/CapitalJS/capitaljs.png?branch=master" alt="Build Status"></a>
-</h1>
+        Capital.js <a href="https://travis-ci.org/CapitalJS/capitaljs"><img src="https://camo.githubusercontent.com/7a8b08368f577082e41cfbfdfe9d53062fa41b3b/68747470733a2f2f7365637572652e7472617669732d63692e6f72672f4361706974616c4a532f6361706974616c6a732e706e673f6272616e63683d6d6173746572" alt="Build Status" data-canonical-src="https://secure.travis-ci.org/CapitalJS/capitaljs.png?branch=master" style="max-width:100%;"></a>
+      </h1>
+      <h2>
+        Installation
+      </h2>
+      <p>
+        In a browser:
+      </p>
+      <pre><code>&lt;script src="capital.js"&gt;&lt;/script&gt;</code></pre>
+      <p>
+        Using npm:
+      </p>
+      <pre><code>$ npm install capitaljs</code></pre>
+      <h2>
+        Usage
+      </h2>
+      <p>
+        In a browser:
+      </p>
+      <pre><code>var rate = capitaljs.compoundAnnualGrowthRate({...});</code></pre>
+      <p>
+        In an AMD loader:
+      </p>
+      <pre><code>require(['capitaljs'], function(capitaljs) {...});</code></pre>
+      <p>
+        In Node:
+      </p>
+      <pre><code>var capitaljs = require('capitaljs');
+var rate = capitaljs.compoundAnnualGrowthRate({...});</code></pre>
+      <p>
+        Or if you just want a single formula (to reduce your browser bundle's filesize):
+      </p>
+      <pre><code>var cagr = require('capitaljs/compoundAnnualGrowthRate');
+var rate = cagr({...});</code></pre>
+      <h2>
+        Current formulae
+      </h2>
+      <h3>
+        Amortization
+      </h3>
+      <p>
+        Calculate the monthly payment of an amortizing loan (like a mortgage) and how the loan has amortized after a specified period of time.
+      </p>
+      <h4>
+        Options
+      </h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Format</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>amount</code></td>
+            <td>number</td>
+            <td>Total amount of the loan</td>
+          </tr>
+          <tr>
+            <td><code>rate</code></td>
+            <td>number</td>
+            <td>Annual interest rate of the loan</td>
+          </tr>
+          <tr>
+            <td><code>totalTerm</code></td>
+            <td>number</td>
+            <td>Total length of the loan, in months</td>
+          </tr>
+          <tr>
+            <td><code>amortizeTerm</code></td>
+            <td>number</td>
+            <td>Point in time after the start of the loan you’d like to check the amortization, in months</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>
+        Returns
+      </h4>
+      <table>
+        <thead>
+          <tr>
+          <th>Property</th>
+          <th>Format</th>
+          <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>balance</code></td>
+            <td>number</td>
+            <td>Total amount of principal left to be paid after the number of months specified in <code>amortizeTerm</code></td>
+          </tr>
+          <tr>
+            <td><code>balanceRound</code></td>
+            <td>string</td>
+            <td><code>balance</code> rounded to the nearest cent</td>
+          </tr>
+          <tr>
+            <td><code>interest</code></td>
+            <td>number</td>
+            <td>Total amount of interest paid on the loan after the number of months specified in <code>amortizeTerm</code></td>
+          </tr>
+          <tr>
+            <td><code>interestRound</code></td>
+            <td>string</td>
+            <td><code>interest</code> rounded to the nearest cent</td>
+          </tr>
+          <tr>
+            <td><code>payment</code></td>
+            <td>number</td>
+            <td>Monthly payment</td>
+          </tr>
+          <tr>
+            <td><code>paymentRound</code></td>
+            <td>string</td>
+            <td><code>payment</code> rounded to the nearest cent</td>
+          </tr>
+          <tr>
+            <td><code>principal</code></td>
+            <td>number</td>
+            <td>Total amount of principal paid on the loan after the number of months specified in <code>amortizeTerm</code></td>
+          </tr>
+          <tr>
+            <td><code>principalRound</code></td>
+            <td>string</td>
+            <td><code>principal</code> rounded to the nearest cent</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>
+        Example
+      </h4>
+      <div class="highlight highlight-source-js">
+        <pre><span class="pl-k">var</span> amortization <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>capitaljs/amortization<span class="pl-pds">'</span></span>);
 
-<h2>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+<span class="pl-c">// What’s the amortization like after 5 years for a 30-year, $180,000 mortgage</span>
+<span class="pl-c">// with a 4.25% interest rate?</span>
+<span class="pl-en">amortization</span>( {
+  amount<span class="pl-k">:</span> <span class="pl-c1">180000</span>,
+  rate<span class="pl-k">:</span> <span class="pl-c1">4.25</span>,
+  totalTerm<span class="pl-k">:</span> <span class="pl-c1">360</span>,
+  amortizeTerm<span class="pl-k">:</span> <span class="pl-c1">60</span>
+} );
 
-<p>In a browser:</p>
+<span class="pl-c">/*</span>
+<span class="pl-c">{</span>
+<span class="pl-c">  balance: 163453.85387151438,</span>
+<span class="pl-c">  balanceRound: "163453.85",</span>
+<span class="pl-c">  interest: 36583.362108097754,</span>
+<span class="pl-c">  interestRound: "36583.36",</span>
+<span class="pl-c">  payment: 885.4918039430557,</span>
+<span class="pl-c">  paymentRound: "885.49",</span>
+<span class="pl-c">  principal: 16546.146128485594,</span>
+<span class="pl-c">  principalRound: "16546.15"</span>
+<span class="pl-c">}</span>
+<span class="pl-c">*/</span></pre>
+      </div>
+      <h3>
+        Cash flow
+      </h3>
+      <p>
+        Calculate how much money is left after subtracting expenses from income.
+      </p>
+      <h4>
+        Options
+      </h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Format</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>income</code></td>
+            <td>positive number or array</td>
+            <td>Total income or an array with all sources of income</td>
+          </tr>
+          <tr>
+            <td><code>expenses</code></td>
+            <td>positive number or array</td>
+            <td>Total expenses or an array with all expenses</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>
+        Returns
+      </h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Format</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>cash</code></td>
+            <td>number</td>
+            <td>Total cash left over after subtracting expenses from income</td>
+          </tr>
+          <tr>
+            <td><code>expenses</code></td>
+            <td>number</td>
+            <td>Total expenses</td>
+          </tr>
+          <tr>
+            <td><code>income</code></td>
+            <td>number</td>
+            <td>Total income</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>
+        Examples
+      </h4>
+      <div class="highlight highlight-source-js">
+        <pre><span class="pl-k">var</span> cashFlow <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>capitaljs/cashFlow<span class="pl-pds">'</span></span>);
 
-<pre><code>&lt;script src="capital.js"&gt;&lt;/script&gt;
-</code></pre>
+<span class="pl-c">// How much money is left over given $50,000 of expenses and a $100,000 income?</span>
+<span class="pl-en">cashFlow</span>( {
+  income<span class="pl-k">:</span> <span class="pl-c1">100000</span>,
+  expenses<span class="pl-k">:</span> <span class="pl-c1">50000</span>
+} );
 
-<p>Using npm:</p>
+<span class="pl-c">/*</span>
+<span class="pl-c">{</span>
+<span class="pl-c">  cash: 50000,</span>
+<span class="pl-c">  expenses: 50000,</span>
+<span class="pl-c">  income: 100000</span>
+<span class="pl-c">}</span>
+<span class="pl-c">*/</span>
 
-<pre><code>$ npm install capitaljs
-</code></pre>
+<span class="pl-c">// How much money is left over given a bunch of different income sources and</span>
+<span class="pl-c">// a bunch of different expenses?</span>
+<span class="pl-en">cashFlow</span>( {
+  income<span class="pl-k">:</span> [<span class="pl-c1">300</span>, <span class="pl-c1">14000</span>, <span class="pl-c1">189</span>],
+  expenses<span class="pl-k">:</span> [<span class="pl-c1">90</span>, <span class="pl-c1">681</span>, <span class="pl-c1">15980</span>, <span class="pl-c1">670</span>]
+} );
 
-<h2>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+<span class="pl-c">/*</span>
+<span class="pl-c">{</span>
+<span class="pl-c">  cash: -2932,</span>
+<span class="pl-c">  expenses: 17421,</span>
+<span class="pl-c">  income: 14489</span>
+<span class="pl-c">}</span>
+<span class="pl-c">*/</span></pre>
+      </div>
+      <h3>
+        Compound annual growth rate
+      </h3>
+      <p>
+        Calculate a compounded annual rate of return on an investment.
+      </p>
+      <h4>
+        Options
+      </h4>
+      <table>
+        <thead>
+          <tr>
+          <th>Option</th>
+          <th>Format</th>
+          <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>startValue</code></td>
+            <td>number</td>
+            <td>Starting value of the investment</td>
+          </tr>
+          <tr>
+            <td><code>endValue</code></td>
+            <td>number</td>
+            <td>Ending value of the investment</td>
+          </tr>
+          <tr>
+            <td><code>years</code></td>
+            <td>number</td>
+            <td>Length of the investment, in years</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>
+        Returns
+      </h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Format</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>percent</code></td>
+            <td>number</td>
+            <td>Compound annual growth rate of the investment, as an unrounded percent</td>
+          </tr>
+          <tr>
+            <td><code>raw</code></td>
+            <td>number</td>
+            <td>Raw compound annual growth rate of the investment</td>
+          </tr>
+          <tr>
+            <td><code>rounded</code></td>
+            <td>number</td>
+            <td>Raw compound annual growth rate of the investment, rounded to the nearest thousandth</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>
+        Example
+      </h4>
+      <div class="highlight highlight-source-js">
+        <pre><span class="pl-k">var</span> compoundAnnualGrowthRate <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>capitaljs/compoundAnnualGrowthRate<span class="pl-pds">'</span></span>);
 
-<p>In a browser:</p>
+<span class="pl-c">// What’s the compound annual growth rate of an investment that started at</span>
+<span class="pl-c">// $50,000 and grew to $100,000 in 10 years?</span>
+<span class="pl-en">compoundAnnualGrowthRate</span>( {
+  startValue<span class="pl-k">:</span> <span class="pl-c1">50000</span>,
+  endValue<span class="pl-k">:</span> <span class="pl-c1">100000</span>,
+  years<span class="pl-k">:</span> <span class="pl-c1">10</span>
+} );
 
-<pre><code>var rate = capitaljs.compoundAnnualGrowthRate({...});
-</code></pre>
+<span class="pl-c">/*</span>
+<span class="pl-c">{</span>
+<span class="pl-c">  percent: 7.199999999999999,</span>
+<span class="pl-c">  raw: 0.07177346253629313,</span>
+<span class="pl-c">  rounded: 0.072</span>
+<span class="pl-c">}</span>
+<span class="pl-c">*/</span></pre>
+      </div>
+      <h3>
+        Inflation-adjusted return
+      </h3>
+      <p>
+        Calculate the return on an investment, accounting for inflation over the lifetime of the investment.
+      </p>
+      <h4>
+        Options
+      </h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Format</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>investmentReturn</code></td>
+            <td>number</td>
+            <td>Investment’s lifetime return, as a decimal (so “8%” is ".06")</td>
+          </tr>
+          <tr>
+            <td><code>inflationRate</code></td>
+            <td>number</td>
+            <td>Inflation rate over the lifetime of the investment, as a decimal (so “3%” is “.03”)</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>
+        Returns
+      </h4>
+      <p>
+        A single number, the inflation-adjusted return, as a percent rounded to the nearest hundredth
+      </p>
+      <h4>
+        Example
+      </h4>
+      <div class="highlight highlight-source-js">
+        <pre><span class="pl-k">var</span> inflationAdjustedReturn <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>capitaljs/inflationAdjustedReturn<span class="pl-pds">'</span></span>);
 
-<p>In an AMD loader:</p>
+<span class="pl-c">// Adjusting for a 3% inflation rate, what’s the return for an investment that</span>
+<span class="pl-c">// grew by 8%?</span>
+<span class="pl-en">inflationAdjustedReturn</span>( {
+  investmentReturn<span class="pl-k">:</span> <span class="pl-c1">.08</span>,
+  inflationRate<span class="pl-k">:</span> <span class="pl-c1">.03</span>
+} );
 
-<pre><code>require(['capitaljs'], function(capitaljs) {...});
-</code></pre>
+<span class="pl-c">// 4.85</span></pre>
+      </div>
+      <h3>
+        Interest accrued
+      </h3>
+      <p>
+        Calculate how much interest has been earned on an initial investment after a period of time.
+      </p>
+      <h4>
+        Options
+      </h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Format</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>principal</code></td>
+            <td>number</td>
+            <td>Initial amount invested</td>
+          </tr>
+          <tr>
+            <td><code>rate</code></td>
+            <td>number</td>
+            <td>Periodic interest rate, as a percent</td>
+          </tr>
+          <tr>
+            <td><code>periods</code></td>
+            <td>number</td>
+            <td>Years since the investment was started</td>
+          </tr>
+          <tr>
+            <td><code>compoundings</code></td>
+            <td>number</td>
+            <td>How often the interest rate is compounded per year (12 would be monthly, 4 is quarterly, 1 is yearly)</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>
+        Returns
+      </h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Format</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>interest</code></td>
+            <td>number</td>
+            <td>Total interest earned on the investment</td>
+          </tr>
+          <tr>
+            <td><code>total</code></td>
+            <td>number</td>
+            <td>Total current value of the investment, rounded to the nearest cent</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>
+        Examples
+      </h4>
+      <div class="highlight highlight-source-js">
+        <pre><span class="pl-k">var</span> interest <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>capitaljs/interest<span class="pl-pds">'</span></span>);
 
-<p>In Node:</p>
+<span class="pl-c">// What’s a $10,000 investment with a 6% interest rate that compounds yearly</span>
+<span class="pl-c">// worth after 10 years</span>
+<span class="pl-en">interest</span>( {
+  principal<span class="pl-k">:</span> <span class="pl-c1">10000</span>,
+  rate<span class="pl-k">:</span> <span class="pl-c1">6</span>,
+  periods<span class="pl-k">:</span> <span class="pl-c1">10</span>,
+  compoundings<span class="pl-k">:</span> <span class="pl-c1">1</span>
+} );
 
-<pre><code>var capitaljs = require('capitaljs');
-var rate = capitaljs.compoundAnnualGrowthRate({...});
-</code></pre>
+<span class="pl-c">/*</span>
+<span class="pl-c">{</span>
+<span class="pl-c">  interest: 7908.48,</span>
+<span class="pl-c">  total: 17908.48</span>
+<span class="pl-c">}</span>
+<span class="pl-c">*/</span>
 
-<p>Or if you just want a single formula (to reduce your browser bundle's filesize):</p>
+<span class="pl-c">// What’s a $10,000 investment with a 6% interest rate that compounds monthly</span>
+<span class="pl-c">// worth after 10 years</span>
+<span class="pl-en">interest</span>( {
+  principal<span class="pl-k">:</span> <span class="pl-c1">10000</span>,
+  rate<span class="pl-k">:</span> <span class="pl-c1">6</span>,
+  periods<span class="pl-k">:</span> <span class="pl-c1">10</span>,
+  compoundings<span class="pl-k">:</span> <span class="pl-c1">12</span>
+} );
 
-<pre><code>var cagr = require('capitaljs/compoundAnnualGrowthRate');
-var rate = cagr({...});
-</code></pre>
+<span class="pl-c">/*</span>
+<span class="pl-c">{</span>
+<span class="pl-c">  interest: 8193.970000000001,</span>
+<span class="pl-c">  total: 18193.97</span>
+<span class="pl-c">}</span>
+<span class="pl-c">*/</span></pre>
+      </div>
+      <h3>
+        Return on investment
+      </h3>
+      <p>
+        Calculate the return on an investment.
+      </p>
+      <h4>
+        Options
+      </h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Format</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>earnings</code></td>
+            <td>number</td>
+            <td>Final value of the investment</td>
+          </tr>
+          <tr>
+            <td><code>initialInvestment</code></td>
+            <td>number</td>
+            <td>Initial value of the investment</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>
+        Returns
+      </h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Format</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>percent</code></td>
+            <td>number</td>
+            <td>Return on investment, as an unrounded percent</td>
+          </tr>
+          <tr>
+            <td><code>raw</code></td>
+            <td>number</td>
+            <td>Raw return on investment</td>
+          </tr>
+          <tr>
+            <td><code>rounded</code></td>
+            <td>number</td>
+            <td>Raw return on investment, rounded to the nearest ten thousandth</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>
+        Example
+      </h4>
+      <div class="highlight highlight-source-js">
+        <pre><span class="pl-k">var</span> returnOnInvestment <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>capitaljs/returnOnInvestment<span class="pl-pds">'</span></span>);
 
-<h2>
-<a id="current-formulae" class="anchor" href="#current-formulae" aria-hidden="true"><span class="octicon octicon-link"></span></a>Current formulae:</h2>
+<span class="pl-c">// What’s the return on a $70,000 investment that grew to $89,700?</span>
+<span class="pl-en">returnOnInvestment</span>( {
+  earnings<span class="pl-k">:</span> <span class="pl-c1">89700</span>,
+  initialInvestment<span class="pl-k">:</span> <span class="pl-c1">70000</span>
+} );
 
-<p>Better docs and examples coming soon.</p>
-
-<pre><code>var amortization = require('capitaljs/amortization');
-
-amortization({
-  amount: 180000,
-  rate: 4.25,
-  totalTerm: 360,
-  amortizeTerm: 60
-});
-</code></pre>
-
-<pre><code>var cash = require('capitaljs/cashFlow');
-
-cash({
-  income: 100000,
-  expenses: 50000
-});
-</code></pre>
-
-<pre><code>var cagr = require('capitaljs/compoundAnnualGrowthRate');
-
-cagr({
-  startValue: 100000,
-  endValue: 50000,
-  years: 10
-});
-</code></pre>
-
-<pre><code>var iar = require('capitaljs/inflationAdjustedReturn');
-
-iar({
-  investmentReturn: .08,
-  inflationRate: .03
-});
-</code></pre>
-
-<pre><code>var interest = require('capitaljs/interest');
-
-interest({
-  principal: 100000,
-  rate: .06,
-  years: 10,
-  compounding: true
-});
-</code></pre>
-
-<pre><code>var roi = require('capitaljs/returnOnInvestment');
-
-roi({
-  earnings: 5000,
-  initialInvestment: 100000
-});
-</code></pre>
-
-<h2>
-<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
-
-<p>Please read the <a href="CONTRIBUTING.md">Contributing guidelines</a>.</p>
-
-<h3>
-<a id="running-tests" class="anchor" href="#running-tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running Tests</h3>
-
-<pre><code>$ npm test
-</code></pre>
-
-<h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
-
-<p>The project is in the public domain within the United States, and
-copyright and related rights in the work worldwide are waived through
-the <a href="http://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal public domain dedication</a>.</p>
-
-<p>All contributions to this project will be released under the CC0
-dedication. By submitting a pull request, you are agreeing to comply
-with this waiver of copyright interest.</p>
-
-<p>Software source code previously released under an open source license and then modified by CFPB staff is considered a "joint work" (see 17 USC § 101); it is partially copyrighted, partially public domain, and as a whole is protected by the copyrights of the non-government authors and must be released according to the terms of the original open-source license.</p>
-
-<p>For further details, please see: <a href="http://www.consumerfinance.gov/developers/sourcecodepolicy/">http://www.consumerfinance.gov/developers/sourcecodepolicy/</a></p>
-
+<span class="pl-c">/*</span>
+<span class="pl-c">{</span>
+<span class="pl-c">  percent: 28.139999999999997,</span>
+<span class="pl-c">  raw: 0.2814285714285714,</span>
+<span class="pl-c">  rounded: 0.2814</span>
+<span class="pl-c">}</span>
+<span class="pl-c">*/</span></pre>
+      </div>
+      <h2>
+        Contributing
+      </h2>
+      <p>
+        Please read the <a href="https://github.com/CapitalJS/capitaljs/blob/master/CONTRIBUTING.md">Contributing guidelines</a>.
+      </p>
+      <h3>
+        Running Tests
+      </h3>
+      <pre><code>$ npm test</code></pre>
+      <h2>
+        License
+      </h2>
+      <p>
+        The project is in the public domain within the United States, and copyright and related rights in the work worldwide are waived through the <a href="http://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal public domain dedication</a>.
+      </p>
+      <p>
+        All contributions to this project will be released under the CC0 dedication. By submitting a pull request, you are agreeing to comply with this waiver of copyright interest.
+      </p>
+      <p>
+        Software source code previously released under an open source license and then modified by CFPB staff is considered a "joint work" (see 17 USC § 101); it is partially copyrighted, partially public domain, and as a whole is protected by the copyrights of the non-government authors and must be released according to the terms of the original open-source license.
+      </p>
+      <p>
+        For further details, please see: <a href="http://www.consumerfinance.gov/developers/sourcecodepolicy/">http://www.consumerfinance.gov/developers/sourcecodepolicy/</a>
+      </p>
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/CapitalJS/capitaljs">Capitaljs</a> is maintained by <a href="https://github.com/CapitalJS">CapitalJS</a>.</span>
-
         <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-
     </section>
-
-  
   </body>
 </html>
