@@ -4,5 +4,6 @@ module.exports = {
   'compoundAnnualGrowthRate': require('./compoundAnnualGrowthRate'),
   'inflationAdjustedReturn': require('./inflationAdjustedReturn'),
   'amortization': require('./amortization'),
-  'returnOnInvestment': require('./returnOnInvestment')
+  'returnOnInvestment': require('./returnOnInvestment'),
+  'formatUSD': require('./format-usd')
 };

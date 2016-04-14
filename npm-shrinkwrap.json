@@ -2079,6 +2079,11 @@
       "version": "3.27.0",
       "from": "yargs@>=3.27.0 <3.28.0",
       "resolved": "http://registry.npmjs.org/yargs/-/yargs-3.27.0.tgz"
+    },
+    "format-usd": {
+      "version": "1.0.0",
+      "from": "format-usd@latest",
+      "resolved": "https://registry.npmjs.org/format-usd/-/format-usd-1.0.0.tgz"
     }
   }
 }
